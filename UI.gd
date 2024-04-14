@@ -19,7 +19,20 @@ func handleCoinCollected():
 	
 	if coins == 3:
 		#método para pasar de nivel godto 4.2.1
-		get_tree().change_scene_to_file("res://Scenes/Mundo2.tscn")
+		print("Escena Actual", get_tree().current_scene.name)
+		var mundo = get_tree().current_scene.name
+		print("Escena Actual", mundo)
+		print("Escena Actual: ",  int(mundo.substr(mundo.length()-1, mundo.length()-1))+1)
+		var siguiente_nivel = str(int(mundo.substr(mundo.length()-1, mundo.length()-1))+1)
+		print(siguiente_nivel)
+		get_tree().change_scene_to_file("res://Scenes/Mundo" +siguiente_nivel+ ".tscn")
+		#get_tree().change_scene_to_file("res://Scenes/Mundo" + str(int(get_tree().current_scene.name)+1) + ".tscn")
+		if coins == 3 && mundo == "Mundo3":
+			get_tree().change_scene_to_file("res://Scenes/Mundo1.tscn")
+		  
+		
+		
+		
 		
 
 

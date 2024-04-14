@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyma7e07irpih"]
+
+[ext_resource type="Texture2D" uid="uid://5lrhpmjijotw" path="res://Sprites/Enemies/slime_blue.png" id="1_hh2la"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_tat45"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvhl7"]
+size = Vector2(16, 10)
+
+[sub_resource type="Animation" id="Animation_1yx2d"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nhol0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8w4ll"]
+resource_name = "Walk"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.825, 1.3, 1.7, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 1, 2, 3, 5, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k1e3f"]
+_data = {
+"Idle": SubResource("Animation_1yx2d"),
+"RESET": SubResource("Animation_nhol0"),
+"Walk": SubResource("Animation_8w4ll")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_tat45")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_jvhl7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hh2la")
+hframes = 5
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k1e3f")
+}
+speed_scale = 2.0
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

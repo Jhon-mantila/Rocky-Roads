@@ -8,6 +8,8 @@ const GRAVITY = 15
 @onready var sprite = $Sprite2D
 @onready var animationPlayer = $AnimationPlayer
 
+func _ready():
+	print("Escena Actual", get_tree().current_scene.name)
 
 func _physics_process(delta):
 	velocity.y += GRAVITY
@@ -42,7 +44,10 @@ func add_coin():
 	canvasLayer.handleCoinCollected()
 
 func _on_mundo_child_entered_tree(node):
-	print("MUNDO 1")
+	print("")
 
-func _on_mundo_2_child_entered_tree(node):
-	print("MUNDO 2")
+
+#func _on_spikes_body_entered(body):
+	#print(body.get_name())
+	#if body.get_name() == "Player" :
+	#	print("Toco las piyas")

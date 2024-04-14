@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyvd0fcul0sj7"]
+
+[ext_resource type="Script" path="res://Scripts/fire.gd" id="1_a14ls"]
+[ext_resource type="Texture2D" uid="uid://dpclyodxxy02i" path="res://Sprites/Enemies/fire.png" id="1_rkux2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2c1n4"]
+radius = 4.0
+height = 8.0
+
+[sub_resource type="Animation" id="Animation_52jlt"]
+resource_name = "fire"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.151534, 0.287883, 0.4, 0.512116, 0.652505),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_gxpue"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_stave"]
+_data = {
+"RESET": SubResource("Animation_gxpue"),
+"fire": SubResource("Animation_52jlt")
+}
+
+[node name="Fire" type="Node2D"]
+
+[node name="fire" type="Area2D" parent="."]
+script = ExtResource("1_a14ls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fire"]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_2c1n4")
+
+[node name="Sprite2D" type="Sprite2D" parent="fire"]
+texture = ExtResource("1_rkux2")
+hframes = 6
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fire"]
+libraries = {
+"": SubResource("AnimationLibrary_stave")
+}
+autoplay = "fire"
+speed_scale = 1.5
+
+[connection signal="body_entered" from="fire" to="fire" method="_on_body_entered"]
