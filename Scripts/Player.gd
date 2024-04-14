@@ -8,6 +8,7 @@ const GRAVITY = 15
 @onready var sprite = $Sprite2D
 @onready var animationPlayer = $AnimationPlayer
 
+
 func _physics_process(delta):
 	velocity.y += GRAVITY
 	var friction = false
@@ -40,5 +41,8 @@ func add_coin():
 	var canvasLayer = get_parent().find_child("CanvasLayer")
 	canvasLayer.handleCoinCollected()
 
+func _on_mundo_child_entered_tree(node):
+	print("MUNDO 1")
 
-
+func _on_mundo_2_child_entered_tree(node):
+	print("MUNDO 2")

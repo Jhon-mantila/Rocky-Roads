@@ -77,3 +77,5 @@ libraries = {
 "": SubResource("AnimationLibrary_k1e3f")
 }
 speed_scale = 2.0
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

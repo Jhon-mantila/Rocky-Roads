@@ -16,6 +16,11 @@ func handleCoinCollected():
 	print("Coin Collected")
 	coins += 1
 	$CoinCollectedText.text = str(coins)
+	
+	if coins == 3:
+		#método para pasar de nivel godto 4.2.1
+		get_tree().change_scene_to_file("res://Scenes/Mundo2.tscn")
+		
 
 
 
