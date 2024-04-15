@@ -44,7 +44,9 @@ func add_coin():
 	canvasLayer.handleCoinCollected()
 
 func _on_mundo_child_entered_tree(node):
-	print("")
+	print("Escena mundo: ", node.name)
+	if node is CharacterBody2D:
+		print("Nodo del juador")
 
 
 #func _on_spikes_body_entered(body):
