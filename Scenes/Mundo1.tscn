@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dwxptytsi51mp"]
+[gd_scene load_steps=26 format=3 uid="uid://dwxptytsi51mp"]
 
 [ext_resource type="Texture2D" uid="uid://h0rv48hl58s6" path="res://Sprites/Deco/water_a_8frames.png" id="1_sbagp"]
 [ext_resource type="Texture2D" uid="uid://blrvruwujehch" path="res://Sprites/Backgrounds/mountains_b.png" id="2_qay2m"]
@@ -13,7 +13,10 @@
 [ext_resource type="Script" path="res://UI.gd" id="11_u0baf"]
 [ext_resource type="Texture2D" uid="uid://es8ctjwi57he" path="res://Sprites/Objects/coin_small_gold.png" id="12_x2olr"]
 [ext_resource type="Script" path="res://Scripts/ZonaCaida.gd" id="13_b1mdl"]
+[ext_resource type="PackedScene" uid="uid://bkh8tje4s5lhy" path="res://Scenes/saw.tscn" id="15_a3ll1"]
 [ext_resource type="PackedScene" uid="uid://cyvd0fcul0sj7" path="res://Scenes/fire.tscn" id="15_yh5aq"]
+[ext_resource type="PackedScene" uid="uid://biqaeelui0sqk" path="res://Scenes/Enemy.tscn" id="16_txu2i"]
+[ext_resource type="PackedScene" uid="uid://b3dwnamopcc08" path="res://Scenes/cannon.tscn" id="17_6vxt5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hxxcd"]
 texture = ExtResource("4_vrqlc")
@@ -302,14 +305,13 @@ collision_animatable = true
 format = 2
 layer_0/name = "primer plano"
 layer_0/y_sort_enabled = true
-layer_0/tile_data = PackedInt32Array(1310727, 196608, 1, 1310728, 262144, 1, 1310729, 196608, 1, 1310730, 262144, 1, 1310731, 196608, 1, 1310732, 262144, 1, 1310733, 327680, 1, 1310726, 131072, 1, 1376262, 131072, 2, 1376261, 65536, 2, 1441797, 65536, 3, 1507333, 65536, 4, 1507334, 131072, 4, 1507335, 196608, 4, 1507336, 262144, 4, 1507337, 327680, 4, 1507338, 131072, 4, 1507339, 196608, 4, 1507340, 262144, 4, 1376269, 327680, 2, 1376270, 393216, 2, 1441806, 393216, 3, 1507342, 393216, 4, 1507341, 327680, 4, 1376264, 262144, 2, 1376265, 196608, 2, 1376266, 262144, 2, 1376267, 196608, 2, 1376268, 262144, 2, 1376263, 196608, 2, 1441800, 262144, 3, 1441801, 327680, 3, 1441802, 131072, 3, 1441803, 196608, 3, 1441804, 262144, 3, 1441805, 327680, 3, 1441798, 131072, 3, 1441799, 196608, 3, 1376274, 196608, 1, 1376275, 262144, 1, 1376276, 196608, 1, 1376277, 262144, 1, 1376273, 131072, 1, 1441809, 131072, 2, 1441808, 65536, 2, 1507344, 65536, 3, 1572880, 65536, 3, 1638416, 65536, 4, 1376278, 262144, 1, 1376279, 327680, 1, 1441815, 327680, 2, 1441816, 393216, 2, 1507352, 393216, 2, 1572888, 393216, 3, 1638424, 393216, 4, 1638417, 131072, 4, 1638418, 196608, 4, 1638419, 262144, 4, 1638420, 131072, 4, 1638421, 196608, 4, 1638422, 262144, 4, 1638423, 327680, 4, 1441810, 196608, 2, 1441811, 262144, 2, 1441812, 196608, 2, 1441813, 196608, 2, 1441814, 262144, 2, 1507345, 131072, 3, 1507346, 196608, 3, 1507347, 131072, 3, 1507348, 131072, 3, 1507349, 196608, 3, 1507350, 262144, 3, 1507351, 327680, 3, 1572881, 131072, 3, 1572882, 196608, 3, 1572883, 131072, 3, 1572884, 131072, 3, 1572885, 196608, 3, 1572886, 262144, 3, 1572887, 327680, 3, 1048583, 1, 0, 1048584, 65537, 0, 1048585, 131073, 0, 1048586, 196609, 0, 1048590, 1, 0, 1048591, 65537, 0, 1048592, 131073, 0, 1048593, 196609, 0, 917524, 1, 0, 917525, 65537, 0, 917526, 131073, 0, 917527, 196609, 0, 917505, 1, 0, 917506, 65537, 0, 917507, 131073, 0, 917508, 196609, 0, 786441, 1, 0, 786442, 65537, 0, 786443, 131073, 0, 786444, 196609, 0, 655384, 655362, 0, 720920, 655362, 1, 655385, 720898, 0, 720921, 720898, 1, 1245191, 3, 0, 1310743, 3, 0, 1245201, 4, 0, 1310737, 4, 1)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(191, 312)
-zoom = Vector2(2.5, 2.5)
+layer_0/tile_data = PackedInt32Array(1310727, 196608, 1, 1310728, 262144, 1, 1310729, 196608, 1, 1310730, 262144, 1, 1310731, 196608, 1, 1310732, 262144, 1, 1310733, 327680, 1, 1310726, 131072, 1, 1376262, 131072, 2, 1376261, 65536, 2, 1441797, 65536, 3, 1507333, 65536, 4, 1507334, 131072, 4, 1507335, 196608, 4, 1507336, 262144, 4, 1507337, 327680, 4, 1507338, 131072, 4, 1507339, 196608, 4, 1507340, 262144, 4, 1376269, 327680, 2, 1376270, 393216, 2, 1441806, 393216, 3, 1507342, 393216, 4, 1507341, 327680, 4, 1376264, 262144, 2, 1376265, 196608, 2, 1376266, 262144, 2, 1376267, 196608, 2, 1376268, 262144, 2, 1376263, 196608, 2, 1441800, 262144, 3, 1441801, 327680, 3, 1441802, 131072, 3, 1441803, 196608, 3, 1441804, 262144, 3, 1441805, 327680, 3, 1441798, 131072, 3, 1441799, 196608, 3, 1376274, 196608, 1, 1376275, 262144, 1, 1376276, 196608, 1, 1376277, 262144, 1, 1376273, 131072, 1, 1441809, 131072, 2, 1441808, 65536, 2, 1507344, 65536, 3, 1572880, 65536, 3, 1638416, 65536, 4, 1376278, 262144, 1, 1376279, 327680, 1, 1441815, 327680, 2, 1441816, 393216, 2, 1507352, 393216, 2, 1572888, 393216, 3, 1638424, 393216, 4, 1638417, 131072, 4, 1638418, 196608, 4, 1638419, 262144, 4, 1638420, 131072, 4, 1638421, 196608, 4, 1638422, 262144, 4, 1638423, 327680, 4, 1441810, 196608, 2, 1441811, 262144, 2, 1441812, 196608, 2, 1441813, 196608, 2, 1441814, 262144, 2, 1507345, 131072, 3, 1507346, 196608, 3, 1507347, 131072, 3, 1507348, 131072, 3, 1507349, 196608, 3, 1507350, 262144, 3, 1507351, 327680, 3, 1572881, 131072, 3, 1572882, 196608, 3, 1572883, 131072, 3, 1572884, 131072, 3, 1572885, 196608, 3, 1572886, 262144, 3, 1572887, 327680, 3, 1048583, 1, 0, 1048584, 65537, 0, 1048585, 131073, 0, 1048586, 196609, 0, 1048590, 1, 0, 1048591, 65537, 0, 1048592, 131073, 0, 1048593, 196609, 0, 917524, 1, 0, 917525, 65537, 0, 917526, 131073, 0, 917527, 196609, 0, 917505, 1, 0, 917506, 65537, 0, 917507, 131073, 0, 917508, 196609, 0, 786441, 1, 0, 786442, 65537, 0, 786443, 131073, 0, 786444, 196609, 0, 655384, 655362, 0, 720920, 655362, 1, 655385, 720898, 0, 720921, 720898, 1, 1245191, 3, 0, 1245201, 4, 0, 1310737, 4, 1)
 
 [node name="Player" parent="." instance=ExtResource("9_oxj45")]
-position = Vector2(191, 312)
+position = Vector2(312, 328)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2.5, 2.5)
 
 [node name="Coin" parent="." instance=ExtResource("10_o2v5s")]
 position = Vector2(120, 300)
@@ -321,35 +323,37 @@ position = Vector2(376, 316)
 position = Vector2(298, 326)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
+offset = Vector2(200, -100)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 200, -100)
 script = ExtResource("11_u0baf")
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = -38.0
-offset_top = 183.0
-offset_right = 3.0
-offset_bottom = 206.0
+offset_left = -46.75
+offset_top = 27.5
+offset_right = -5.75
+offset_bottom = 50.5
 theme_override_styles/panel = SubResource("StyleBoxFlat_6blp0")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(-30, 195)
+position = Vector2(-38.75, 39.5)
 scale = Vector2(1.1875, 1.125)
 texture = ExtResource("12_x2olr")
 hframes = 6
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = -22.0
-offset_top = 181.0
-offset_right = -17.0
-offset_bottom = 204.0
+offset_left = -30.75
+offset_top = 25.5
+offset_right = -25.75
+offset_bottom = 48.5
 theme_override_font_sizes/font_size = 16
 text = ":"
 
 [node name="CoinCollectedText" type="Label" parent="CanvasLayer"]
-offset_left = -16.0
-offset_top = 183.0
-offset_right = 17.0
-offset_bottom = 206.0
+offset_left = -24.75
+offset_top = 27.5
+offset_right = 8.25
+offset_bottom = 50.5
 theme_override_font_sizes/font_size = 16
 text = "00"
 
@@ -361,10 +365,19 @@ position = Vector2(205, 445)
 shape = SubResource("RectangleShape2D_dgdq6")
 
 [node name="Fire" parent="." instance=ExtResource("15_yh5aq")]
-position = Vector2(329, 328)
+position = Vector2(390, 344)
 
 [node name="Fire2" parent="." instance=ExtResource("15_yh5aq")]
-position = Vector2(153, 312)
+position = Vector2(164, 312)
+
+[node name="Saw" parent="." instance=ExtResource("15_a3ll1")]
+position = Vector2(252, 297)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("16_txu2i")]
+position = Vector2(196, 312)
+
+[node name="Cannon" parent="." instance=ExtResource("17_6vxt5")]
+position = Vector2(375, 331)
 
 [connection signal="child_entered_tree" from="." to="Player" method="_on_mundo_child_entered_tree"]
 [connection signal="body_entered" from="ZonaCaida" to="ZonaCaida" method="_on_body_entered"]

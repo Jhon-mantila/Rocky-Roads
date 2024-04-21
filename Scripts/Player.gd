@@ -43,6 +43,10 @@ func add_coin():
 	var canvasLayer = get_parent().find_child("CanvasLayer")
 	canvasLayer.handleCoinCollected()
 
+func lose_life():
+	print("Nos hemos pinchado perdiendo vida")
+	get_tree().reload_current_scene()
+
 func _on_mundo_child_entered_tree(node):
 	print("Escena mundo: ", node.name)
 	if node is CharacterBody2D:
