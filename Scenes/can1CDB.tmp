@@ -92,6 +92,3 @@ libraries = {
 "": SubResource("AnimationLibrary_pfr5i")
 }
 autoplay = "fire"
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-10, -6)

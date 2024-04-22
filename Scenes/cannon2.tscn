@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3dwnamopcc08"]
+[gd_scene load_steps=8 format=3 uid="uid://cxhd5xippjy2n"]
 
-[ext_resource type="Texture2D" uid="uid://b2jihpgaqyh6a" path="res://Sprites/Enemies/cannon (3).png" id="1_0iawf"]
-[ext_resource type="Script" path="res://Scripts/cannon.gd" id="1_m8330"]
+[ext_resource type="Texture2D" uid="uid://b2jihpgaqyh6a" path="res://Sprites/Enemies/cannon (3).png" id="2_mbycy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xcd8m"]
 size = Vector2(16, 16)
@@ -65,11 +64,10 @@ _data = {
 
 [node name="Cannon" type="Node2D"]
 position = Vector2(-1, -3)
-script = ExtResource("1_m8330")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 7)
-texture = ExtResource("1_0iawf")
+texture = ExtResource("2_mbycy")
 hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdtumg132kygf"]
+
+[ext_resource type="Texture2D" uid="uid://fjchtneehlc2" path="res://Sprites/Enemies/bullet.png" id="1_jhom5"]
+
+[sub_resource type="GDScript" id="GDScript_yylst"]
+script/source = "extends Area2D
+
+var velocity = Vector2.RIGHT
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func _physics_process(delta):
+	position += velocity * delta
+"
+
+[node name="Area2D" type="Area2D"]
+script = SubResource("GDScript_yylst")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jhom5")
