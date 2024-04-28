@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://du4l6gcuym7i7"]
+
+[ext_resource type="Texture2D" uid="uid://d2bli01vcjig3" path="res://Sprites/Objects/heart.png" id="1_2hmfo"]
+
+[sub_resource type="Animation" id="Animation_2ug56"]
+resource_name = "healt"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_da07j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_opmne"]
+_data = {
+"RESET": SubResource("Animation_da07j"),
+"healt": SubResource("Animation_2ug56")
+}
+
+[node name="Heart" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_2hmfo")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
+libraries = {
+"": SubResource("AnimationLibrary_opmne")
+}
+autoplay = "healt"
+speed_scale = 0.8

@@ -1,8 +1,15 @@
 extends CanvasLayer
 
 var coins = 0
+var heart1
+var heart2
+var heart3
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	heart1 = get_node("Heart1")
+	heart2 = get_node("Heart2")
+	heart3 = get_node("Heart3")
 	#var coinNode = get_tree().get_root().find_node("Coin", true, false)
 	#coinNode.connect("coinCollected", self, "handleCoinCollected()")
 	#var coinNode = get_parent().find_child("Coin2D")
@@ -29,6 +36,14 @@ func handleCoinCollected():
 		#get_tree().change_scene_to_file("res://Scenes/Mundo" + str(int(get_tree().current_scene.name)+1) + ".tscn")
 		if coins == 3 && mundo == "Mundo3":
 			get_tree().change_scene_to_file("res://Scenes/Mundo1.tscn")
+			
+func handle_hearts(lifes):
+	if lifes == 0:
+		heart1.visible = false
+	if lifes == 1:
+		heart2.visible = false
+	if lifes == 2:
+		heart3.visible = false
 		  
 		
 		

@@ -7,4 +7,4 @@ func _ready():
 func _on_area_2d_body_entered(body):
 	print(body.get_name())
 	if body.get_name() == "Player":
-		body.lose_life()
+		body.lose_life(position.x)

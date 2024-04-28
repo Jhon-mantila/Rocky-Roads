@@ -8,6 +8,8 @@ const GRAVITY = 15
 @onready var sprite = $Sprite2D
 @onready var animationPlayer = $AnimationPlayer
 
+var lifes = 3
+
 func _ready():
 	print("Escena Actual", get_tree().current_scene.name)
 
@@ -43,9 +45,23 @@ func add_coin():
 	var canvasLayer = get_parent().find_child("CanvasLayer")
 	canvasLayer.handleCoinCollected()
 
-func lose_life():
-	print("Nos hemos pinchado perdiendo vida")
-	get_tree().reload_current_scene()
+func lose_life(enemy_pos_x):
+	if position.x < enemy_pos_x:
+		velocity.x = -200
+		velocity.y = -100
+		
+	if position.x > enemy_pos_x:
+		velocity.x = 200
+		velocity.y = -100
+		
+	print("Nos hemos pinchado perdiendo vida actual: " + str(lifes))
+	
+	lifes = lifes - 1
+	
+	var canvasLayer = get_parent().find_child("CanvasLayer")
+	canvasLayer.handle_hearts(lifes)
+	if lifes <= 0:
+		get_tree().reload_current_scene()
 
 func _on_mundo_child_entered_tree(node):
 	print("Escena mundo: ", node.name)

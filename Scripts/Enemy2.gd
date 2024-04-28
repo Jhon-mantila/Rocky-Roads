@@ -6,7 +6,7 @@ var moving_left = true
 
 func _ready():
 	$AnimationPlayer.play("Walk")
-	print("Collider 2: ", $RayCast2D2.is_colliding())
+	#print("Collider 2: ", $RayCast2D2.is_colliding())
 	
 func _process(delta):
 	move_charater()
@@ -23,8 +23,9 @@ func move_charater():
 	move_and_slide()
 
 func turn():
-	if  not $RayCast2D.is_colliding() || $RayCast2D2.is_colliding():
+	if  not $RayCast2D.is_colliding():
 		#print("Entro al turn+++")
+		#|| $RayCast2D2.is_colliding()
 		moving_left = !moving_left
 		scale.x = -scale.x
 

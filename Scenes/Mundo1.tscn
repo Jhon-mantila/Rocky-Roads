@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dwxptytsi51mp"]
+[gd_scene load_steps=28 format=3 uid="uid://dwxptytsi51mp"]
 
 [ext_resource type="Texture2D" uid="uid://h0rv48hl58s6" path="res://Sprites/Deco/water_a_8frames.png" id="1_sbagp"]
 [ext_resource type="Texture2D" uid="uid://blrvruwujehch" path="res://Sprites/Backgrounds/mountains_b.png" id="2_qay2m"]
@@ -13,11 +13,12 @@
 [ext_resource type="Script" path="res://UI.gd" id="11_u0baf"]
 [ext_resource type="Texture2D" uid="uid://es8ctjwi57he" path="res://Sprites/Objects/coin_small_gold.png" id="12_x2olr"]
 [ext_resource type="Script" path="res://Scripts/ZonaCaida.gd" id="13_b1mdl"]
+[ext_resource type="PackedScene" uid="uid://du4l6gcuym7i7" path="res://Scenes/heart.tscn" id="13_q82ga"]
 [ext_resource type="PackedScene" uid="uid://d0lt6tsvc3klo" path="res://Scenes/pause_menu.tscn" id="13_w8ckn"]
 [ext_resource type="PackedScene" uid="uid://bkh8tje4s5lhy" path="res://Scenes/saw.tscn" id="15_a3ll1"]
 [ext_resource type="PackedScene" uid="uid://cyvd0fcul0sj7" path="res://Scenes/fire.tscn" id="15_yh5aq"]
 [ext_resource type="PackedScene" uid="uid://biqaeelui0sqk" path="res://Scenes/Enemy.tscn" id="16_txu2i"]
-[ext_resource type="PackedScene" uid="uid://b3dwnamopcc08" path="res://Scenes/cannon.tscn" id="17_6vxt5"]
+[ext_resource type="PackedScene" uid="uid://c0xccy3q2vj0t" path="res://Scenes/Enemy2.tscn" id="17_2ytys"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hxxcd"]
 texture = ExtResource("4_vrqlc")
@@ -342,6 +343,15 @@ scale = Vector2(1.1875, 1.125)
 texture = ExtResource("12_x2olr")
 hframes = 6
 
+[node name="Heart1" parent="CanvasLayer" instance=ExtResource("13_q82ga")]
+position = Vector2(3.25, 39.25)
+
+[node name="Heart2" parent="CanvasLayer" instance=ExtResource("13_q82ga")]
+position = Vector2(16.25, 39)
+
+[node name="Heart3" parent="CanvasLayer" instance=ExtResource("13_q82ga")]
+position = Vector2(29.5, 39.25)
+
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = -30.75
 offset_top = 25.5
@@ -351,15 +361,16 @@ theme_override_font_sizes/font_size = 16
 text = ":"
 
 [node name="CoinCollectedText" type="Label" parent="CanvasLayer"]
-offset_left = -24.75
-offset_top = 27.5
-offset_right = 8.25
-offset_bottom = 50.5
+offset_left = -25.0
+offset_top = 28.0
+offset_right = -5.0
+offset_bottom = 51.0
 theme_override_font_sizes/font_size = 16
 text = "00"
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("13_w8ckn")]
 process_mode = 3
+visible = false
 offset_left = -50.0
 offset_top = 24.0
 offset_right = -915.0
@@ -381,11 +392,11 @@ position = Vector2(164, 312)
 [node name="Saw" parent="." instance=ExtResource("15_a3ll1")]
 position = Vector2(252, 297)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("16_txu2i")]
-position = Vector2(196, 312)
+[node name="CharacterBody2D2" parent="." instance=ExtResource("16_txu2i")]
+position = Vector2(199, 312)
 
-[node name="Cannon" parent="." instance=ExtResource("17_6vxt5")]
-position = Vector2(375, 331)
+[node name="CharacterBody2D" parent="." instance=ExtResource("17_2ytys")]
+position = Vector2(363, 328)
 
 [connection signal="child_entered_tree" from="." to="Player" method="_on_mundo_child_entered_tree"]
 [connection signal="body_entered" from="ZonaCaida" to="ZonaCaida" method="_on_body_entered"]
